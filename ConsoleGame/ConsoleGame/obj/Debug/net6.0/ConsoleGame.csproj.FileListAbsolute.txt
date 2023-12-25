@@ -1,0 +1,14 @@
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\bin\Debug\net6.0\ConsoleGame.exe
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\bin\Debug\net6.0\ConsoleGame.deps.json
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\bin\Debug\net6.0\ConsoleGame.runtimeconfig.json
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\bin\Debug\net6.0\ConsoleGame.dll
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\bin\Debug\net6.0\ConsoleGame.pdb
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ConsoleGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ConsoleGame.AssemblyInfoInputs.cache
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ConsoleGame.AssemblyInfo.cs
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ConsoleGame.csproj.CoreCompileInputs.cache
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ConsoleGame.dll
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\refint\ConsoleGame.dll
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ConsoleGame.pdb
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ConsoleGame.genruntimeconfig.cache
+C:\Users\forcs\source\repos\DaJuTask\ConsoleGame\ConsoleGame\obj\Debug\net6.0\ref\ConsoleGame.dll
