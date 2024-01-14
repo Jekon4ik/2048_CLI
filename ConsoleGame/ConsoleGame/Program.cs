@@ -21,7 +21,7 @@ namespace ConsoleGame
             Field[3, 0] = 2;
             OutputGameField();
             Console.ReadLine();
-            DownSwap();   
+            UpSwap();   
             OutputGameField();
             
 
@@ -105,7 +105,38 @@ namespace ConsoleGame
         }
         public static void UpSwap()
         {
+            for (int i = 0; i < 4; i++)
+            {
+                int[] column = new int[4];
+                int index = 0;
 
+                for (int j = 0; j < 4; j++)
+                {
+                    if (Field[j, i] != 0)
+                    {
+                        column[index] = Field[j, i];
+                        index++;
+                    }
+                }
+
+                for (int j = 0; j < 3; j++)
+                {
+                    if (column[j] == column[j + 1])
+                    {
+                        column[j] *= 2;
+                        for (int k = j + 1; k < 3; k++)
+                        {
+                            column[k] = column[k + 1];
+                        }
+                        column[3] = 0;
+                    }
+                }
+
+                for (int j = 0; j < 4; j++)
+                {
+                    Field[j, i] = column[j];
+                }
+            }
         }
         public static void DownSwap()
         {
