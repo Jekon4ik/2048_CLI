@@ -78,6 +78,15 @@ namespace ConsoleGame
                 }
                 Console.WriteLine();
             }
+            ShowScore();
+        }
+        static void ShowScore()
+        {
+            Console.CursorVisible = false;
+            Console.SetCursorPosition(24, 0);
+            Console.BackgroundColor = ConsoleColor.Cyan; Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Score: " + Score);
+            Console.BackgroundColor = ConsoleColor.Black;
         }
         static void HandleInput(ConsoleKeyInfo presedKey)
         {
@@ -228,6 +237,7 @@ namespace ConsoleGame
                     if (row[j] == row[j - 1])
                     {
                         row[j] *= 2;
+                        Score += row[j];
                         for (int k = j - 1; k > 0; k--)
                         {
                             row[k] = row[k - 1];
@@ -262,6 +272,7 @@ namespace ConsoleGame
                     if (row[j] == row[j + 1])
                     {
                         row[j] *= 2;
+                        Score += row[j];
                         for (int k = j + 1; k < 3; k++)
                         {
                             row[k] = row[k + 1];
@@ -296,6 +307,7 @@ namespace ConsoleGame
                     if (column[j] == column[j + 1])
                     {
                         column[j] *= 2;
+                        Score += column[j];
                         for (int k = j + 1; k < 3; k++)
                         {
                             column[k] = column[k + 1];
@@ -331,6 +343,7 @@ namespace ConsoleGame
                     if (column[j] == column[j - 1])
                     {
                         column[j] *= 2;
+                        Score += column[j];
                         for (int k = j - 1; k > 0; k--)
                         {
                             column[k] = column[k - 1];
@@ -345,6 +358,5 @@ namespace ConsoleGame
                 }
             }
         }
-
     }
 }
