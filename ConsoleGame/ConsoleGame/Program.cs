@@ -21,7 +21,7 @@ namespace ConsoleGame
             Field[3, 0] = 2;
             OutputGameField();
             Console.ReadLine();
-            LeftSwap();   
+            DownSwap();   
             OutputGameField();
             
 
@@ -109,42 +109,36 @@ namespace ConsoleGame
         }
         public static void DownSwap()
         {
-            for (int k = 0; k < 3; k++) 
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = Field.GetLength(1) - 1; j >= 0; j--)
-                {
-                    for (int i = Field.GetLength(0) - 1; i > 0; i--)
-                    {
-                        if (Field[i, j] == Field[i-1, j])
-                        {
-                            Field[i, j] = Field[i, j] + Field[i-1, j];
-                            Field[i - 1, j] = 0;
-                        }
-                        try
-                        {
-                            if (Field[i-2, j] == 0 || Field[i-2, j] == Field[i, j])
-                            {
-                                Field[i - 2, j] += Field[i, j];
-                                Field[i, j] = 0;
-                            }
-                        }
-                        catch { }
+                int[] column = new int[4];
+                int index = 3;
 
+                for (int j = 3; j >= 0; j--)
+                {
+                    if (Field[j, i] != 0)
+                    {
+                        column[index] = Field[j, i];
+                        index--;
                     }
                 }
-            }
-            for (int i = 1; i < Field.GetLength(0); i++)
-            {
-                for (int j = 0; j < Field.GetLength(1); j++)
+
+                for (int j = 3; j > 0; j--)
                 {
-                    if (Field[i - 1, j] != 0)
+                    if (column[j] == column[j - 1])
                     {
-                        if (Field[i, j] == 0)
+                        column[j] *= 2;
+                        for (int k = j - 1; k > 0; k--)
                         {
-                            Field[i, j] = Field[i - 1, j];
-                            Field[i - 1, j] = 0;
+                            column[k] = column[k - 1];
                         }
+                        column[0] = 0;
                     }
+                }
+
+                for (int j = 0; j < 4; j++)
+                {
+                    Field[j, i] = column[j];
                 }
             }
         }
