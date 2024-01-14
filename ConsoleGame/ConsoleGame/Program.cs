@@ -9,13 +9,16 @@ namespace ConsoleGame
         static void Main(string[] args)
         {
             Field[0,3] = 2;
-            Field[0,2] = 2;
-            Field[0,1] = 0;
-            Field[0,0] = 0;
-            Field[1, 3] = 2;
+            Field[0,2] = 0;
+            Field[0,1] = 2;
+            Field[0,0] = 2;
+            Field[1, 3] = 0;
             Field[1, 2] = 2;
             Field[1, 1] = 2;
             Field[1, 0] = 2;
+            Field[2, 0] = 0;
+            Field[3, 2] = 2;
+            Field[3, 0] = 2;
             OutputGameField();
             Console.ReadLine();
             LeftSwap();   
@@ -36,79 +39,114 @@ namespace ConsoleGame
         }
         public static void RightSwap()
         {
-           for(int k =0; k < 3; k++)
-           {
-                for (int i = Field.GetLength(0) - 1; i >= 0; i--)
+            for (int i = 0; i < 4; i++)
+            {
+                int[] row = new int[4];
+                int index = 3;
+                for (int j = 3; j >= 0; j--)
                 {
-                    for (int j = Field.GetLength(1) - 1; j > 0; j--)
+                    if (Field[i, j] != 0)
                     {
-                        if (Field[i, j] == Field[i, j - 1])
-                        {
-                            Field[i, j] = Field[i, j] + Field[i, j - 1];
-                            Field[i, j - 1] = 0;
-                        }
-
+                        row[index] = Field[i, j];
+                        index--;
                     }
                 }
-           }
-           for(int i = 0; i< Field.GetLength(0); i++)
-            {
-                for (int j =1; j < Field.GetLength(1); j++)
+                for (int j = 3; j > 0; j--)
                 {
-                    if (Field[i,j-1] != 0)
+                    if (row[j] == row[j - 1])
                     {
-                        if (Field[i, j] == 0)
+                        row[j] *= 2;
+                        for (int k = j - 1; k > 0; k--)
                         {
-                            Field[i, j] = Field[i, j - 1];
-                            Field[i, j - 1] = 0;
+                            row[k] = row[k - 1];
                         }
+                        row[0] = 0;
                     }
+                }
+                for (int j = 0; j < 4; j++)
+                {
+                    Field[i, j] = row[j];
                 }
             }
-          
+
         }
         public static void LeftSwap()
         {
-            for (int k = 0; k < 3; k++)
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < Field.GetLength(0); i++)
+                int[] row = new int[4];
+                int index = 0;
+                for (int j = 0; j < 4; j++)
                 {
-                    for (int j = 0; j <Field.GetLength(1)-1; j++)
+                    if (Field[i, j] != 0)
                     {
-                        //Console.WriteLine($"i = {i} j = {j}");
-                        if (Field[i, j] == Field[i, j + 1])
+                        row[index] = Field[i, j];
+                        index++;
+                    }
+                }
+
+                for (int j = 0; j < 3; j++)
+                {
+                    if (row[j] == row[j + 1])
+                    {
+                        row[j] *= 2;
+                        for (int k = j + 1; k < 3; k++)
                         {
-                            Field[i, j] = Field[i, j] + Field[i, j + 1];
-                            Field[i, j + 1] = 0;
+                            row[k] = row[k + 1];
                         }
+                        row[3] = 0;
+                    }
+                }
+                for (int j = 0; j < 4; j++)
+                {
+                    Field[i, j] = row[j];
+                }
+            }
+        }
+        public static void UpSwap()
+        {
+
+        }
+        public static void DownSwap()
+        {
+            for (int k = 0; k < 3; k++) 
+            {
+                for (int j = Field.GetLength(1) - 1; j >= 0; j--)
+                {
+                    for (int i = Field.GetLength(0) - 1; i > 0; i--)
+                    {
+                        if (Field[i, j] == Field[i-1, j])
+                        {
+                            Field[i, j] = Field[i, j] + Field[i-1, j];
+                            Field[i - 1, j] = 0;
+                        }
+                        try
+                        {
+                            if (Field[i-2, j] == 0 || Field[i-2, j] == Field[i, j])
+                            {
+                                Field[i - 2, j] += Field[i, j];
+                                Field[i, j] = 0;
+                            }
+                        }
+                        catch { }
 
                     }
                 }
-                //Console.WriteLine("gey");
             }
-            for (int i = Field.GetLength(0)-1; i >= 0; i--)
+            for (int i = 1; i < Field.GetLength(0); i++)
             {
-                for (int j = Field.GetLength(1)-2; j >=0; j--)
+                for (int j = 0; j < Field.GetLength(1); j++)
                 {
-                    Console.WriteLine($"i = {i} j = {j}");
-                    if (Field[i, j + 1] != 0)
+                    if (Field[i - 1, j] != 0)
                     {
                         if (Field[i, j] == 0)
                         {
-                            Field[i, j] = Field[i, j + 1];
-                            Field[i, j + 1] = 0;
+                            Field[i, j] = Field[i - 1, j];
+                            Field[i - 1, j] = 0;
                         }
                     }
                 }
             }
-        }
-        public void UpSwap()
-        {
-
-        }
-        public void DownSwap()
-        {
-
         }
 
     }
