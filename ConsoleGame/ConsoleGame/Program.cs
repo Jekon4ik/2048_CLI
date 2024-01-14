@@ -27,7 +27,54 @@ namespace ConsoleGame
             {
                 for (int j = 0; j < Field.GetLength(1); j++)
                 {
-                    Console.Write(Field[i, j] + " ");
+                    if (Field[i, j] > 999)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red; Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(Field[i, j] + " ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else if (Field[i, j] > 540)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red; Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(Field[i, j] + "  ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else if (Field[i, j] > 99)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkYellow; Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(Field[i, j] + "  ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else if (Field[i, j] == 64)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkYellow; Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(" " + Field[i, j] + "  ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else if (Field[i, j] > 9)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta; Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(" " + Field[i, j] + "  ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else if (Field[i, j] == 8)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta; Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("  " + Field[i, j] + "  ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else if (Field[i, j] == 0)
+                    {
+                        Console.BackgroundColor = ConsoleColor.White; Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("  " + Field[i, j] + "  ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.Gray; Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("  " + Field[i, j] + "  ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
                 }
                 Console.WriteLine();
             }
