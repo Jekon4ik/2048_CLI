@@ -56,6 +56,51 @@ namespace ConsoleGame
             if (check == 0) EndGame = true;
             else EndGame = false;
         }
+        static void RandomNewElements()
+        {
+            Random rand = new Random();
+            int counterOfEmpty = 0;
+            int randomCell;
+            int newCounterOfEmpty = 0;
+            for (int i = 0; i < Field.GetLength(0); i++)
+            {
+                for (int j = 0; j < Field.GetLength(1); j++)
+                {
+                    if (Field[i, j] == 0)
+                    {
+                        counterOfEmpty++;
+                    }
+                }
+            }
+            if (counterOfEmpty == 0) CheckStatus();
+            else
+            {
+                randomCell = rand.Next(0, counterOfEmpty + 1);
+                for (int g = 0; g < Field.GetLength(0); g++)
+                {
+                    for (int h = 0; h < Field.GetLength(1); h++)
+                    {
+                        if (Field[g, h] == 0)
+                        {
+                            newCounterOfEmpty++;
+                            if (newCounterOfEmpty == randomCell)
+                            {
+                                if (rand.Next(0, 10) == 9)
+                                {
+                                    Field[g, h] = 4;
+                                }
+                                else
+                                {
+                                    Field[g, h] = 2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
         public static void RightSwap()
         {
             for (int i = 0; i < 4; i++)
