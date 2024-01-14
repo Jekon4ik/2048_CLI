@@ -18,7 +18,10 @@ namespace ConsoleGame
                 ConsoleKeyInfo pressedKey = Console.ReadKey();
                 HandleInput(pressedKey);
             }
+            Console.SetCursorPosition(0,5);
+            Console.BackgroundColor = ConsoleColor.Green;
             Console.WriteLine("Game over!");
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.ReadKey();
         }
         public static void OutputGameField()
