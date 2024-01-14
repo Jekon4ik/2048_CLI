@@ -20,6 +20,55 @@ namespace ConsoleGame
                 Console.WriteLine();
             }
         }
+        static void HandleInput(ConsoleKeyInfo presedKey)
+        {
+            int[,] before = new int[4, 4];
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    before[i, j] = Field[i, j];
+                }
+            }
+            int[,] after;
+            if (presedKey.Key == ConsoleKey.UpArrow)
+            {
+                UpSwap();
+            }
+            else if (presedKey.Key == ConsoleKey.DownArrow)
+            {
+                DownSwap();
+            }
+            else if (presedKey.Key == ConsoleKey.LeftArrow)
+            {
+                LeftSwap();
+            }
+            else if (presedKey.Key == ConsoleKey.RightArrow)
+            {
+                RightSwap();
+            }
+            after = Field;
+            if (IsSmthChanged(before, after))
+            {
+                RandomNewElements();
+            }
+            else
+            {
+                CheckStatus();
+            }
+        }
+        static bool IsSmthChanged(int[,] matrixA, int[,] matrixB)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (matrixA[i, j] != matrixB[i, j])
+                        return true;
+                }
+            }
+            return false;
+        }
         static void CheckStatus()
         {
             int check = 0;
