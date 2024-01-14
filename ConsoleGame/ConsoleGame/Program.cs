@@ -7,7 +7,19 @@ namespace ConsoleGame
         public static int Score = 0;
         public static bool EndGame = false;
         static void Main(string[] args)
-        {       
+        {
+            Console.CursorVisible = false;
+            RandomNewElements();
+            RandomNewElements();
+            while (EndGame == false)
+            {
+                Console.Clear();
+                OutputGameField();
+                ConsoleKeyInfo pressedKey = Console.ReadKey();
+                HandleInput(pressedKey);
+            }
+            Console.WriteLine("Game over!");
+            Console.ReadKey();
         }
         public static void OutputGameField()
         {
