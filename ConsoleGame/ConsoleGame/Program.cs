@@ -7,24 +7,7 @@ namespace ConsoleGame
         public static int Score = 0;
         public static bool EndGame = false;
         static void Main(string[] args)
-        {
-            Field[0,3] = 2;
-            Field[0,2] = 0;
-            Field[0,1] = 2;
-            Field[0,0] = 2;
-            Field[1, 3] = 0;
-            Field[1, 2] = 2;
-            Field[1, 1] = 2;
-            Field[1, 0] = 2;
-            Field[2, 0] = 0;
-            Field[3, 2] = 2;
-            Field[3, 0] = 2;
-            OutputGameField();
-            Console.ReadLine();
-            UpSwap();   
-            OutputGameField();
-            
-
+        {       
         }
         public static void OutputGameField()
         {
@@ -36,6 +19,42 @@ namespace ConsoleGame
                 }
                 Console.WriteLine();
             }
+        }
+        static void CheckStatus()
+        {
+            int check = 0;
+            for (int i = 0; i < Field.GetLength(0); i++)
+            {
+                for (int j = 0; j < Field.GetLength(1); j++)
+                {
+                    if (j != 0 && Field[i, j - 1] == Field[i, j])
+                    {
+                        check++;
+                        break;
+                    }
+                    //right
+                    if (j != Field.GetLength(1) - 1 && Field[i, j + 1] == Field[i, j])
+                    {
+                        check++;
+                        break;
+                    }
+                    //up
+                    if (i != 0 && Field[i - 1, j] == Field[i, j])
+                    {
+                        check++;
+                        break;
+                    }
+                    //down
+                    if (i != Field.GetLength(0) - 1 && Field[i + 1, j] == Field[i, j])
+                    {
+                        check++;
+                        break;
+                    }
+
+                }
+            }
+            if (check == 0) EndGame = true;
+            else EndGame = false;
         }
         public static void RightSwap()
         {
